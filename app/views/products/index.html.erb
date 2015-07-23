@@ -41,8 +41,11 @@
                     </h4>
                     <ul>
                     	<li>
-                    		<b><%= product.title %></b>
+                    		<b><%= product.title.capitalize %></b>
                     	</li>
+                        <li>
+                            Price: <b><%= product.price %> euros</b>
+                        </li>
 						<li>
 							Description: <%= product.description %> 
 						</li>

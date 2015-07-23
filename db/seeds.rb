@@ -10,15 +10,15 @@ user2 = User.create!(name: Faker::Name.name, email: Faker::Internet.free_email, 
 user3 = User.create!(name: Faker::Name.name, email: Faker::Internet.free_email, password: '123', password_confirmation: '123')
 
 3.times do |product|
-  user1.products.create!(title: Faker::Lorem.word, description: Faker::Lorem.sentence(3, true), deadline: Faker::Time.forward(800, :morning))
+  user1.products.create!(title: Faker::Lorem.word, description: Faker::Lorem.sentence(3, true), deadline: Faker::Time.forward(800, :morning), price: Faker::Number.number(3))
 end
 
 3.times do |product|
-  user2.products.create!(title: Faker::Lorem.word, description: Faker::Lorem.sentence(3, true), deadline: Faker::Time.forward(800, :morning))
+  user2.products.create!(title: Faker::Lorem.word, description: Faker::Lorem.sentence(3, true), deadline: Faker::Time.forward(800, :morning), price: Faker::Number.number(3))
 end
 
 3.times do |product|
-  user3.products.create!(title: Faker::Lorem.words(2).join(''), description: Faker::Lorem.sentence(3, true), deadline: Faker::Time.forward(800, :morning))
+  user3.products.create!(title: Faker::Lorem.words(2).join(''), description: Faker::Lorem.sentence(3, true), deadline: Faker::Time.forward(800, :morning), price: Faker::Number.number(3))
 end
 
 
