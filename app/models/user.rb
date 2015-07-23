@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	has_attached_file :logo, styles: {:medium => "300x300", :thumb => "100x100"}
+	has_attached_file :logo, styles: {:medium => "300x300", :thumb => "100x100"}, :default_url => "http://www.worlddentalposters.com/assets/img/avatar.png"
 	validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\z/
 	validates :name, presence: true, uniqueness: true
 	validates :email, presence: true, uniqueness: true

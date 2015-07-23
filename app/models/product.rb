@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
   validates :price, presence: true
 	validates :title, presence: true, uniqueness: true
-	has_attached_file :logo, styles: {:medium => "300x300", :thumb => "100x100"}
+	has_attached_file :logo, styles: {:medium => "300x300", :thumb => "100x100"}, :default_url => "http://daneshbonyan.isti.ir/uploads/total-product-marketing_11363.jpg"
 	validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\z/
 	belongs_to :user
 	has_many :bids
