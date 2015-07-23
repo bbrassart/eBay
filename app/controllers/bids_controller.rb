@@ -11,7 +11,9 @@ class BidsController < ApplicationController
 		@product = Product.find(params[:product_id])
 		@bid = @product.bids.new bid_params
 		@bid.user_id = current_user.id
-		if @bid.valid? && @product.present?
+		if (@bid.amount < @product.price) 
+			redirect_to user_products_path(@product.user_id), notice: "Somehting went wrong. Your bid has to be higher than the price set by the owner"
+		elsif (@bid.valid? && @product.present?) 
 			@bid.save
 			@product.bids << @bid
 			redirect_to user_products_path(@product.user_id), notice: "The bid #{@bid.amount}€ has been placed."

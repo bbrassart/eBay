@@ -22,7 +22,9 @@ end
 end
 
 
-50.times do |review|
-  Product.find_by_id(rand(Product.first.id..Product.last.id)).reviews.create!(user: User.find_by_id(rand(User.first.id..User.last.id)), content: Faker::Lorem.sentence(3, true))
-  Product.find_by_id(rand(Product.first.id..Product.last.id)).bids.create!(user: User.find_by_id(rand(User.first.id..User.last.id)), amount: Faker::Number.between(1, 1000))
+40.times do |review|
+  p = Product.find_by_id(rand(Product.first.id..Product.last.id))
+  p.reviews.create!(user: User.find_by_id(rand(User.first.id..User.last.id)), content: Faker::Lorem.sentence(3, true))
+  p = Product.find_by_id(rand(Product.first.id..Product.last.id))
+  p.bids.create!(user: User.find_by_id(rand(User.first.id..User.last.id)), amount: (p.price + Faker::Number.between(1, 100)))
 end
