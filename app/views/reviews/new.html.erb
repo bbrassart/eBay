@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Post a new review for this product</h2>
+        <%= form_for [@product_id, @review], method: "POST" do |f| %>
+
+
+  You want to add a review for "<%= @product.title %>"
+
+  <%= hidden_field_tag :product_id, @product.id %>
+
+    <div class="field">
+    <%= f.label :content %>
+    <br />
+    <%= f.text_field :content %>
+  </div>
+
+    <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+    </div>
+  </div>
+</div>

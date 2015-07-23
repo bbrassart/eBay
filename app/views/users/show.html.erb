@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<ul>
+				<li>
+				<p>Here is the profile of the following user</p>
+				</li>
+				<li> 
+	                <div class="media">
+	                    <div class="media-left">
+	                        <a href='<%= "#{@user.id}/products" %>'>
+	                            <img class="media-object" src="<%= @user.logo.url(:medium)%>" alt="User logo">
+	                        </a>
+	                    </div>
+	                    <div class="media-body">
+	                        <h4 class="media-heading"><%= @user.name %></h4>
+	                            <%= @user.email %>
+	                    </div>
+	                </div>
+	            </li>
+	        </ul>
+	    </div>
+	    <div class="col-md-4">
+	    	<% if (current_user.id == @user.id) %>
+	    		<ul>
+					<li><%= link_to "Show the products of this user", user_products_path(current_user) %></li>
+					<li><%= link_to "Edit your profile", edit_user_path  %></li>
+					<li><%= link_to 'Delete your profile forever', user_path(current_user), method: :delete %></li>
+				</ul>
+				<% else %>
+					<ul>
+						<li><%= link_to "Show the products of this user", "#{@user.id}/products" %></li>
+					</ul>
+				<%end%>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+
+

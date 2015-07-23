@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Register as a new User</h2>
+			<div class="col-md-6">
+				<%= form_for @user, :html => {:multipart => true }  do |f| %>
+				<%= f.label :logo %>
+				<%= f.file_field :logo %>
+
+			</div>
+			<div class="col-md-6">
+				<div class="field">
+					<%= f.label :name %>
+					<%=f.text_field :name %>
+				</div>
+				<div class="field">
+					<%= f.label :email %>
+					<%=f.text_field :email %>
+				</div>
+				<div class="field">
+					<%= f.label :password %>
+					<%= f.password_field :password %>
+				</div>
+				<div class="field">
+					<%= f.label :password_confirmation %>
+					<%= f.password_field :password_confirmation %>
+				</div>
+				<div class="actions">
+				<%= f.submit %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

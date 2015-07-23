@@ -1,0 +1,26 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Place a new bid for this product</h2>
+			<p>Type the amount you're willing to pay for this product</p>
+  			<%= form_for [@product_id, @bid], method: "POST" do |f| %>
+
+
+  You want to place a bid for "<%= @product.title %>"
+
+  <%= hidden_field_tag :product_id, @product.id %>
+
+    <div class="field">
+    <%= f.label :amount %>
+    <br />
+    <%= f.text_field :amount %>
+  </div>
+
+    <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+		</div>
+	</div>
+</div>

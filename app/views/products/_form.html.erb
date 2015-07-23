@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <%= form_for (product), :html => {:multipart => true } do |f| %>
+            <%= render 'layouts/errors', model: product %>
+            <div class="field">
+                <%= f.label :logo %>
+                <%= f.file_field :logo %>
+            </div>
+            <div class="field">
+                <%= f.label :title %>
+                <%= f.text_field :title %>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="field">
+                <%= f.label :description %>
+                <%= f.text_field :description %>
+            </div>
+            <div class="field">
+                <%= f.label :deadline %>
+                <%= f.datetime_select :deadline %>
+            </div>
+            <div class="actions">
+                <%= f.submit %>
+            </div>
+        <% end %>
+        </div>
+    </div>
+</div>

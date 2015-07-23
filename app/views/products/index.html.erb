@@ -1,0 +1,90 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<h1><%= @user.name %></h1>
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="<%= @user.logo.url(:thumb)%>" alt="User logo">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">
+	                    <% if (@products.present?) %>
+							<%if (@products.length === 1) %>
+								<%= @user.name %> owns <%= @products.length %> product
+							<%else%> 
+								<%= @user.name %> owns <%= @products.length %> products
+							<%end%>
+						<% else %> <%= @user.name %> didn't submit any product yet
+						<% end %>
+                    </h4>
+                </div>
+            </div>
+            <ul><% if (current_user.id == @user.id) %>
+            	<li><%= link_to "Submit a new product", new_product_path %></li>
+                <%end%>
+            	<li><%= link_to "Return to the user page", user_path(@user.id) %></li>
+            </ul>
+	    </div>
+	    <div class="col-md-8">
+	    	<% @products.each.with_index do |product, index| %>
+	    	<div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="<%= product.logo.url(:thumb)%>" alt="User logo">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                    	<%= (index + 1).ordinalize %> product :
+                    </h4>
+                    <ul>
+                    	<li>
+                    		<b><%= product.title %></b>
+                    	</li>
+						<li>
+							Description: <%= product.description %> 
+						</li>
+						<li> 
+							Deadline: You still have until <b><%= product.deadline %></b> to place your bid
+						</li>
+                        <br/>
+                        <% if product.bids.present?%>
+                            <h2>Bids</h2>
+                            <% product.bids.each do |bid| %>
+                                <li><b><%= bid.user.name %></b> just posted a bid of <b><%= bid.amount %></b> euros has been placed the <%= bid.created_at.strftime("%d/%m/%Y at %I:%M%p")%></li>
+                            <%end%>
+                            <%else%>
+                            <li>Sorry, no bids were placed for this item yet.</li>
+                        <%end%>
+                        </ul>
+                        <ul>
+
+                        <% if product.reviews.present? %>
+                        <h2>Reviews</h2>
+                            <% product.reviews.each do |review| %>
+                                <li><b><%= review.user.name %></b> just posted this review.<br> <%= review.content %> <br>Posted the <%= review.created_at.strftime("%d/%m/%Y at %I:%M%p")%></li>
+                            <%end%>
+                            <%else%>
+                            <li>Sorry, no reviews were submitted for this item yet.</li>
+                        <%end%>
+					</ul>
+                </div>
+            </div>
+           
+            <ul>
+            	<li><% if (current_user.id == @user.id) %>
+					   <%= link_to 'Delete', [@user, product], method: :delete %>  
+                        <%= link_to 'Edit', edit_product_path(product.id) %>
+                    <%end%>
+                    <% if (current_user.id != @user.id) %> 
+                        <%= link_to "Make a bid", new_bid_path(product: product.id)%><br>
+                        <%= link_to "Post a review", new_review_path(product: product.id)%>
+                    <%end%>
+                </li>
+			</ul>
+            <%end%>
+	    </div>
+	</div>
+</div>
