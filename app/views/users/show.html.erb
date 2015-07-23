@@ -21,17 +21,11 @@
 	        </ul>
 	    </div>
 	    <div class="col-md-4">
-	    	<% if (current_user.id == @user.id) %>
-	    		<ul>
-					<li><%= link_to "Show the products of this user", user_products_path(current_user) %></li>
-					<li><%= link_to "Edit your profile", edit_user_path  %></li>
-					<li><%= link_to 'Delete your profile forever', user_path(current_user), method: :delete %></li>
+	    	<% if (current_user.id != @user.id) %>
+				<ul>
+					<li><%= link_to "Show the products of this user", "#{@user.id}/products" %></li>
 				</ul>
-				<% else %>
-					<ul>
-						<li><%= link_to "Show the products of this user", "#{@user.id}/products" %></li>
-					</ul>
-				<%end%>
+			<%end%>
 			</ul>
 		</div>
 	</div>

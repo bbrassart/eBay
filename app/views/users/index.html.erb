@@ -15,13 +15,14 @@
                                 <li> 
                                     <div class="media">
                                         <div class="media-left">
-                                            <a href="<%= user_path(user) %>">
+                                            <a href="<%= "/users/#{user.id}/products" %>">
                                                 <img class="media-object small__avatar" src="<%= user.logo.url%>" alt="User logo">
                                             </a>
                                         </div>
                                         <div class="media-body">
                                             <h4 class="media-heading"><%= user.name %></h4>
-                                            <%= user.email %>
+                                            <%= user.email %><br>
+                                            <a href="<%= "/users/#{user.id}/products" %>">See the products of this user</a>
                                         </div>
                                     </div>
                                 </li>

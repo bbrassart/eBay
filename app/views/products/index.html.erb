@@ -24,7 +24,7 @@
             <ul><% if (current_user.id == @user.id) %>
             	<li><%= link_to "Submit a new product", new_product_path %></li>
                 <%end%>
-            	<li><%= link_to "Return to the user page", user_path(@user.id) %></li>
+            	<li><%= link_to "Want to know more about the user?", user_path(@user.id) %></li>
             </ul>
 	    </div>
 	    <div class="col-md-8">

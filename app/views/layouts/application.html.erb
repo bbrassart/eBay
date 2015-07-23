@@ -12,26 +12,36 @@
 	<div class="row">
 		<div class="col-md-12">
 			<% if current_user %>
-				<div class="media current_user--loggedin__info">
-                    <div class="media-left">
-                    	<a href="<%= user_path(current_user) %>">
-                        	<img class="media-object current_user--logo" src="<%=current_user.logo.url(:thumb)%>" alt="User logo">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Hello <%= current_user.name %> </h4>
-                        <ul>
-                        	<li><%= link_to 'Log out', '/logout'%></li>
-							<li><%= link_to 'Edit your profile', "/users/#{current_user.id}/" %></li>
-						</ul>
-					</div>
-				</div>
-			<%else%>
 				<ul>
-					<li>Hello visitor! You can <%= link_to 'sign up here', new_user_path%></li>
-					<li><%= link_to 'Log in', '/login'%></li>
+					<li>
+						<h4 class="loggedin__info--box media-heading">Hello <%= current_user.name %> !</h4>
+					</li>
+					<li class="loggedin__info">
+						<a href="<%= user_path(current_user) %>">
+						<img class="media-object current_user--logo" src="<%=current_user.logo.url(:thumb)%>" alt="User logo">
+            			</a>
+            		</li>
+            		<li class="loggedin__info">
+            			<div class="btn-group manage__account">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Manage your account <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><%= link_to "See your products", user_products_path(current_user) %></li>
+								<li><%= link_to 'Edit your profile', edit_user_path(current_user) %></li>
+								<li><%= link_to 'Log out', '/logout'%></li>
+								<li role="separator" class="divider"></li>
+								<li><%= link_to 'Delete your profile forever', user_path(current_user), method: :delete %></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			<% else %>
+				<ul>
+					<li class="loggedin__info--box">Hello visitor! You can <%= link_to 'sign up here', new_user_path%></li>
+					<li class="loggedin__info--box"><%= link_to 'Log in', '/login'%></li>
 				</ul>		
-			<%end%>
+			<% end %>
 			<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 			<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 			<%= csrf_meta_tags %>
@@ -40,8 +50,6 @@
 			<%= content_tag :div, value, class: "flash-info" %>
 			<% end %>
 			<%= yield %>
-
-
 		</div>
 	</div>
 	<footer>
