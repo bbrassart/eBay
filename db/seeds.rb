@@ -18,5 +18,5 @@ user2.products.create!(title: Faker::Lorem.word, description: Faker::Lorem.sente
 end
 
 3.times do |product|
-user3.products.create!(title: Faker::Lorem.words(2), description: Faker::Lorem.sentence(3, true), deadline: Faker::Time.forward(800, :morning))
+user3.products.create!(title: Faker::Lorem.words(2).join(''), description: Faker::Lorem.sentence(3, true), deadline: Faker::Time.forward(800, :morning))
 end
