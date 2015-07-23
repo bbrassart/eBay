@@ -4,7 +4,7 @@ User.destroy_all
 puts " --- Deleting all Products (MUHAHAHAHAHAA) --- "
 Product.destroy_all
 
-
+user4 = User.create!(name: 'Bart', email: 'bart@gmail.com', password: 'bart', password_confirmation: 'bart')
 user1 = User.create!(name: Faker::Name.name, email: Faker::Internet.free_email, password: '123', password_confirmation: '123')
 user2 = User.create!(name: Faker::Name.name, email: Faker::Internet.free_email, password: '123', password_confirmation: '123')
 user3 = User.create!(name: Faker::Name.name, email: Faker::Internet.free_email, password: '123', password_confirmation: '123')
