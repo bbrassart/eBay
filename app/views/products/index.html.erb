@@ -53,7 +53,7 @@
                         <% if product.bids.present?%>
                             <h2>Bids</h2>
                             <% product.bids.each do |bid| %>
-                                <li><b><%= bid.user.name %></b> just posted a bid of <b><%= bid.amount %></b> euros has been placed the <%= bid.created_at.strftime("%d/%m/%Y at %I:%M%p")%></li>
+                                <li><b><%= bid.user.name %></b> just posted a bid of <b><%= bid.amount %></b> the <%= bid.created_at.strftime("%d/%m/%Y at %I:%M%p")%></li>
                             <%end%>
                             <%else%>
                             <li>Sorry, no bids were placed for this item yet.</li>
@@ -64,7 +64,7 @@
                         <% if product.reviews.present? %>
                         <h2>Reviews</h2>
                             <% product.reviews.each do |review| %>
-                                <li><b><%= review.user.name %></b> just posted this review.<br> <%= review.content %> <br>Posted the <%= review.created_at.strftime("%d/%m/%Y at %I:%M%p")%></li>
+                                <li><b><%= review.user.name %></b> posted this review:<br><b>"</b> <em><%= review.content %></em> <b>"</b><br>Posted the <%= review.created_at.strftime("%d/%m/%Y at %I:%M%p")%></li><br>
                             <%end%>
                             <%else%>
                             <li>Sorry, no reviews were submitted for this item yet.</li>
