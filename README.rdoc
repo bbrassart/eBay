@@ -1,28 +1,19 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+eBay replica!
 
-Things you may want to cover:
+Built with Ruby on Rails.
+You can create a new user, make a bid, post a product, make a comment, etc..
+Images can be modified. You can add new ones, update, user profile, product thumbnail, etc...
 
-* Ruby version
+Getting Started
 
-* System dependencies
+Git clone
+Bundle install
+create database and seed it
+You can log in with the following credentials:
+Email: bart@gmail.com
+PWD: bart
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+initialize the rails server
+You are good to go
