@@ -10,6 +10,19 @@ body {
 	height: 100px;
 }
 
+.hero-unit {
+padding: 0 0 0 60px;
+margin-bottom: 30px;
+font-size: 18px;
+font-weight: 200;
+line-height: 30px;
+color: inherit;
+background-image: url('http://www.designbolts.com/wp-content/uploads/2012/12/Subtle-Grey-Tileable-Pattern-For-Website-Background.jpg');
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+}
+
 
 .loggedin__info {
 	display: inline-block;

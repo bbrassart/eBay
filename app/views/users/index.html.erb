@@ -1,18 +1,26 @@
+<% if (!current_user.present?) %>
+<div class="hero-unit welcome">
+  <div class="container">
+          <div class="row-fluid">
+            <div class="span12">
+              <h1>Hello, world! Welcome to my eBay</h1>
+              <p>Register as a new user to enjoy all the features of this site</p>
+              <%= link_to 'Register as a new user', new_user_path, class:"btn btn-primary btn-large"%>
+
+            </div>
+        </div>
+    </div>
+</div>
+<%else%>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-
-           
-            <% if (!current_user.present?) %>
-                <h2><%= link_to 'Register as a new user', new_user_path %>....<br><br> to enjoy all the features of this site</h2>
-              
-            <%else%>
                 <h1>Users currently using eBay</h1>
                 <p>Click on the image to check out all the details</p>
                     <% @users.each do |user| %>
                         <% if (current_user.id != user.id) %>
                             <ul>
-                                <li> 
+                                <li>
                                     <div class="media">
                                         <div class="media-left">
                                             <a href="<%= "/users/#{user.id}/products" %>">
